@@ -1,6 +1,6 @@
 package arraysandhashing
 
-func containsDuplicate(nums []int) bool {
+func ContainsDuplicate(nums []int) bool {
 	prev := map[int]bool{}
 	for _, n := range nums {
 		if _, ok := prev[n]; ok {
