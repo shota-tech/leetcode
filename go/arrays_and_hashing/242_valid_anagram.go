@@ -5,8 +5,8 @@ func IsAnagram(s string, t string) bool {
 		return false
 	}
 
-	countS := map[string]int{}
-	countT := map[string]int{}
+	countS := make(map[string]int, len(s))
+	countT := make(map[string]int, len(t))
 	for i := 0; i < len(s); i++ {
 		countS[string(s[i])]++
 		countT[string(t[i])]++
