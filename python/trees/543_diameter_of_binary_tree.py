@@ -21,13 +21,13 @@ class Solution:
             if not root:
                 return 0
 
-            left_depth = dfs(root.left)
-            right_depth = dfs(root.right)
-            diameter = left_depth + right_depth
+            left_height = dfs(root.left)
+            right_height = dfs(root.right)
+            diameter = left_height + right_height
             res = max(res, diameter)
 
-            # return depth of the tree
-            return 1 + max(left_depth, right_depth)
+            # return height of the tree
+            return 1 + max(left_height, right_height)
 
         dfs(root)
         return res
