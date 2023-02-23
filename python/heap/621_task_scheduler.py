@@ -1,7 +1,6 @@
 # https://leetcode.com/problems/task-scheduler/
 
-from collections import Counter
-from collections import deque
+from collections import Counter, deque
 import heapq
 
 
