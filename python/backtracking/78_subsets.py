@@ -3,17 +3,14 @@
 class Solution:
     def subsets(self, nums: list[int]) -> list[list[int]]:
         res = []
-        subset = []
 
-        def backtrack(i: int):
+        def backtrack(i: int, path: list[int]):
             if i == len(nums):
-                res.append(subset.copy())
+                res.append(path)
                 return
 
-            subset.append(nums[i])
-            backtrack(i + 1)
-            subset.pop()
-            backtrack(i + 1)
+            backtrack(i + 1, path + [nums[i]])
+            backtrack(i + 1, path)
 
-        backtrack(0)
+        backtrack(0, [])
         return res
