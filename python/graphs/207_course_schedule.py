@@ -2,26 +2,26 @@
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: list[list[int]]) -> bool:
-        pre_courses = {i: [] for i in range(numCourses)}
+        prereq = {i: [] for i in range(numCourses)}
         for course, pre in prerequisites:
-            pre_courses[course].append(pre)
+            prereq[course].append(pre)
 
         visit = set()
+        path = set()
 
         def dfs(course: int) -> bool:
             if course in visit:
+                return True
+            if course in path:
                 return False
 
-            if not pre_courses[course]:
-                return True
-
-            visit.add(course)
-            for pre in pre_courses[course]:
+            path.add(course)
+            for pre in prereq[course]:
                 if not dfs(pre):
                     return False
+            path.remove(course)
 
-            visit.remove(course)
-            pre_courses[course] = []
+            visit.add(course)
             return True
 
         for i in range(numCourses):
